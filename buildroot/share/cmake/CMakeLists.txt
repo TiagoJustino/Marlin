@@ -24,13 +24,13 @@ set(SCRIPT_BRANCH 1.0.2) #Set to wanted marlin-cmake release tag or branch
 
 if(NOT EXISTS ${CMAKE_CURRENT_LIST_DIR}/marlin-cmake)
 
-	file(DOWNLOAD https://github.com/tohara/marlin-cmake/archive/${SCRIPT_BRANCH}.tar.gz
-				  ${CMAKE_CURRENT_LIST_DIR}/marlin-cmake-src.tar.gz SHOW_PROGRESS)
+    file(DOWNLOAD https://github.com/tohara/marlin-cmake/archive/${SCRIPT_BRANCH}.tar.gz
+            ${CMAKE_CURRENT_LIST_DIR}/marlin-cmake-src.tar.gz SHOW_PROGRESS)
 
-	execute_process(COMMAND ${CMAKE_COMMAND} -E tar -xvf ${CMAKE_CURRENT_LIST_DIR}/marlin-cmake-src.tar.gz WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR})
+    execute_process(COMMAND ${CMAKE_COMMAND} -E tar -xvf ${CMAKE_CURRENT_LIST_DIR}/marlin-cmake-src.tar.gz WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR})
 
-	file(RENAME ${CMAKE_CURRENT_LIST_DIR}/marlin-cmake-${SCRIPT_BRANCH} ${CMAKE_CURRENT_LIST_DIR}/marlin-cmake)
-	file(REMOVE ${CMAKE_CURRENT_LIST_DIR}/marlin-cmake-src.tar.gz)
+    file(RENAME ${CMAKE_CURRENT_LIST_DIR}/marlin-cmake-${SCRIPT_BRANCH} ${CMAKE_CURRENT_LIST_DIR}/marlin-cmake)
+    file(REMOVE ${CMAKE_CURRENT_LIST_DIR}/marlin-cmake-src.tar.gz)
 
 
 endif()
@@ -48,7 +48,7 @@ set(CMAKE_MODULE_PATH  ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_LIST_DIR}/marlin-cma
 #====================================================================#
 #set(ARDUINO_SDK_PATH ${CMAKE_CURRENT_LIST_DIR}/arduino-1.6.8)
 #set(ARDUINO_SDK_PATH /home/tom/git/BigBox-Dual-Marlin/ArduinoAddons/Arduino_1.6.x)
-#set(ARDUINO_SDK_PATH  /home/tom/test/arduino-1.6.11)
+set(ARDUINO_SDK_PATH "C:\\Program Files (x86)\\Arduino")
 #====================================================================#
 #  Set included cmake files                                          #
 #====================================================================#
@@ -113,9 +113,12 @@ endif()
 #====================================================================#
 #  Register arduino libraries not included in SDK                    #
 #====================================================================#
-#link_directories(/home/tom/test/ArduinoAddons) #U8glib
-#set(${PROJECT_NAME}_ARDLIBS U8glib)
-#set(U8glib_RECURSE True)
+link_directories(C:\\Users\\justino\\Documents\\Arduino\\libraries) #U8glib
+set(${PROJECT_NAME}_ARDLIBS U8glib)
+set(U8glib_RECURSE True)
+
+set(${PROJECT_NAME}_ARDLIBS LiquidCrystal)
+set(LiquidCrystal_RECURSE True)
 
 #====================================================================#
 # Command to generate code arduino firmware (.hex file)              #

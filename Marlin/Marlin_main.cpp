@@ -14891,7 +14891,9 @@ void idle(
     max7219.idle_tasks();
   #endif
 
-  lcd_update();
+  if(commands_in_queue == 0) {
+    lcd_update();
+  }
 
   host_keepalive();
 
